@@ -7,6 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\functions\Helper;
+use App\Models\Type;
 
 
 class ProjectsTableSeeder extends Seeder
@@ -19,6 +20,8 @@ class ProjectsTableSeeder extends Seeder
         for($i = 0; $i < 5; $i++){
             $newProject = new Project();
             $newProject->name = $faker->sentence();
+            // mischia tutti gli elementi della tabella type, prende il primo elemento e mi restituisce il suo id
+            $newProject->type_id = Type::inRandomOrder()->first()->id;
             $newProject->description = $faker->paragraph();
             $newProject->status = $faker->boolean();
             $newProject->github = $faker->url();
