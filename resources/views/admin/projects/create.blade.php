@@ -18,6 +18,7 @@
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
+
         <div class="mb-3">
             <label for="github" class="form-label">Github</label>
             <input type="text" class="form-control" id="github" name="github" value="{{ old('github') }}">
@@ -25,6 +26,15 @@
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
+
+        <label for="type">Tipo:</label>
+        <select name="type_id" id="type" class="form-select my-3" aria-label="Default select example">
+            <option value="" selected>Seleziona il tipo...</option>
+            @foreach ($types as $type)
+                <option value="{{ $type->id }}" @if (old('type_id') == $type->id) selected @endif>{{ $type->name }}
+                </option>
+            @endforeach
+        </select>
 
         <div class="form-check">
             <input class="form-check-input" type="radio" name="status" value="0" id="flexRadioDefault1">

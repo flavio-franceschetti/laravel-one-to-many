@@ -7,10 +7,9 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Descrizione</th>
                 <th scope="col">Data di creazione</th>
                 <th scope="col">Status</th>
-                <th scope="col">GitHub</th>
+                <th scope="col">Type</th>
                 <th scope="col">Azioni</th>
             </tr>
             </thead>
@@ -19,10 +18,12 @@
                     <tr>
                         <td>{{ $project->id }}</td>
                         <td>{{ $project->name }}</td>
-                        <td>{{ $project->description }}</td>
                         <td>{{ $project->created_at->format('d-m-Y') }}</td>
                         <td>{{ $project->status ? 'Done' : 'In progress' }}</td>
-                        <td>{{ $project->github }}</td>
+                        <td>
+                            {{-- stampo in pagina il tipo --}}
+                            {{ $project->type ? $project->type->name : 'nessuna categoria' }}
+                        </td>
                         <td class="d-flex flex-column gap-2">
                             <a class="btn btn-primary" href="{{ route('admin.projects.show', $project) }}"><i
                                     class="fa-solid fa-eye"></i></a>
