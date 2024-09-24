@@ -24,12 +24,12 @@
                             {{-- stampo in pagina il tipo --}}
                             {{ $project->type ? $project->type->name : 'nessuna categoria' }}
                         </td>
-                        <td class="d-flex flex-column gap-2">
+                        <td class="d-flex gap-2">
                             <a class="btn btn-primary" href="{{ route('admin.projects.show', $project) }}"><i
                                     class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-warning" href="{{ route('admin.projects.edit', $project) }}"><i
                                     class="fa-solid fa-pen-to-square"></i></a>
-                            <form onsubmit="return confirm('Sicuro di voler eliminare?')"
+                            <form class="d-inline" onsubmit="return confirm('Sicuro di voler eliminare?')"
                                 action="{{ route('admin.projects.destroy', $project) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
