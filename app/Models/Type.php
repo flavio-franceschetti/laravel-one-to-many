@@ -9,9 +9,12 @@ class Type extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'type'
-    ];
+   protected $fillable = [
+    'name',
+    'slug'
+   ];
+   
+   
     
     //definisco che ogni type può avere molti projects quindi la relazione One-to-many
     public function projects(){
